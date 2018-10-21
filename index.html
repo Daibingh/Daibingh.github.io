@@ -1,12 +1,18 @@
-<html>
-<head>
-<meta charset="utf-8">
-<title>Hello World!</title>
-</head>
-<head>
-	<p>窗前明月光</p>
-	<p>疑似地上霜</p>
-	<P>举头望明月</P>
-	<p>低头思故乡</p>
-</head>
-</html> 
+---
+layout: default
+title: your awesome title
+page-title: your awesome page-title.
+home-title: your awesome home-title.
+description: description
+---
+
+{% include header.html %}
+{% include boot.html %}
+<main>
+    {% include title.html %}
+    <ul class="post-list">
+      {% include posts_paginator.html %}
+    </ul>
+</main>
+{% include pageNav.html %}
+{% include footer.html %}
