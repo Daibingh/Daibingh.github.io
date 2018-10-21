@@ -1,79 +1,12 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
 <head>
-	<title>My love for you</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<style type="text/css">
-		@font-face {
-			font-family: digit;
-			src: url('digital-7_mono.ttf') format("truetype");
-		}
-	</style>
-	<link href="css/default.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/garden.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
+<meta charset="utf-8">
+<title>Hello World!</title>
 </head>
-
-<body>
-	<div id="mainDiv">
-		<div id="content">
-			<div id="code" style="text-indent:2em">
-				<p>此前学习几乎是我的全部，我从未想过开始一段感情。暑假申请宿舍的失败让我原本的提前开始科研工作的计划泡汤。于是，我在大学毕业的第六天开始了我的学车之旅……</p>
-				<p>直到某一天，你的出现渐渐掀起我内心的波澜。那时，感觉和你在一起练车心情很愉快，你的缺席会让我格外失落。我发现我喜欢上了你！</p>
-				<p>我不知道你对我了解如何，我从来没有对一个女孩如此用心。</p>
-				<p>我不想在这个假期留下遗憾，所以，我必须告诉你：我喜欢你。</p>
-			</div>
-			<div id="loveHeart">
-				<canvas id="garden"></canvas>
-				<div id="words">
-					<div id="messages">
-						Yearn, I have fallen in love with you for
-						<div id="elapseClock"></div>
-					</div>
-					<div id="loveu">
-						Love u forever and ever.<br/>
-						<div class="signature">- Daibingh</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="copyright">
-			Copyright © 2018 <a href='https://daibingh.github.io'>Daibingh</a>
-		</div>
-	</div>
-	<script type="text/javascript">
-		var offsetX = $("#loveHeart").width() / 2;
-		var offsetY = $("#loveHeart").height() / 2 - 55;
-		var together = new Date();
-		together.setFullYear(2018, 6, 10);
-		together.setHours(8);
-		together.setMinutes(0);
-		together.setSeconds(0);
-		together.setMilliseconds(0);
-		
-		if (!document.createElement('canvas').getContext) {
-			var msg = document.createElement("div");
-			msg.id = "errorMsg";
-			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-			document.body.appendChild(msg);
-			$("#code").css("display", "none")
-			$("#copyright").css("position", "absolute");
-			$("#copyright").css("bottom", "10px");
-		    document.execCommand("stop");
-		} else {
-			setTimeout(function () {
-				startHeartAnimation();
-			}, 16000);
-
-			timeElapse(together);
-			setInterval(function () {
-				timeElapse(together);
-			}, 500);
-
-			adjustCodePosition();
-			$("#code").typewriter();
-		}
-	</script>
-</body>
-</html>
+<head>
+	<p>窗前明月光</p>
+	<p>疑似地上霜</p>
+	<P>举头望明月</P>
+	<p>低头思故乡</p>
+</head>
+</html> 
