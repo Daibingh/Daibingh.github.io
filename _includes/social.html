@@ -1,0 +1,20 @@
+<ul class="social-media-list">
+    <li>
+        <a href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+            <svg class="svg-icon grey">
+                <use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use>
+            </svg> 
+          <span class="username">{{ site.github_username| escape }}</span>
+        </a>
+    </li>
+
+  <!-- <li>
+      <a href="https://twitter.com/{{ site.twitter_username| cgi_escape | escape }}">
+          <svg class="svg-icon grey">
+              <use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use>
+          </svg> 
+        <span class="username">{{ site.twitter_username| escape }}</span>
+      </a>
+  </li> -->
+    <!-- {%- if site.googleplus_username -%}<li><a href="https://plus.google.com/{{ site.googleplus_username| escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#googleplus' | relative_url }}"></use></svg> <span class="username">{{ site.googleplus_username| escape }}</span></a></li>{%- endif -%} -->
+</ul>

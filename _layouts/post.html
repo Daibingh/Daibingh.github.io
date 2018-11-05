@@ -1,70 +1,32 @@
-<!-- 博文的布局-Layout -->
-<!DOCTYPE html>
-<html>
-<head>
-<!-- 引入head标签 -->
-{% include head.html %}
-{% include androidColor.html %}
-</head>
-<body>
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-<!-- 顶部锚点 -->
-<a id="htmlup" name="htmlup"></a>
-<!-- 引入博文顶部选项 -->
-{% include post-header.html %}
-<!-- 引入移动下拉选项 -->
-{% include boot.html %}
-<!-- 引入博文顶部样式 -->
-{% include post-title.html %}
-<div class="markdown-body fadeInUp animated">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author | escape }}</span></span>
+      {%- endif -%}</p>
+  </header>
 
-  {% if page.subtitle %}
-    {% if page.color.size==0 or page.color==nil %}
-      <div class="postpage-subtitle" style="border-left: 8px solid #9A85FF; border-right: 8px solid #9A85FF;">
-        {{ page.subtitle }}
-      </div>
-    {% else %}
-      <div class="postpage-subtitle" style="border-left: 8px solid {{ page.color }}; border-right: 8px solid {{ page.color }}">
-        {{ page.subtitle }}
-      </div>
-    {% endif %}
-  {% endif %}
+  <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav"></ul>
+  </div>
 
-  <!-- 文章内容 -->
-  {{ page.content }}
-  <!-- 引入share模块 -->
-  {% include share.html %}
-</div>
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
 
-<!-- 底部锚点 -->
-<a id="htmldown" name="htmldown"></a>
-<!-- 引入评论模块 -->
-{% include comment.html %}
-<!-- 引入goto模块 -->
-{% include goto.html %}
-<!-- 引入页面底部模块 -->
-{% include footer.html %}
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
 
-<!-- 引用wow.js的动画效果 -->
-<script src="/assets/js/wow.js"></script>
-<script>
-    var wow = new WOW({
-        boxClass: 'wow',
-        animateClass: 'animated',
-        // offset: 600,
-        mobile: true,
-        live: true
-    });
-    wow.init();
-</script>
-<!-- 页面刷新回到顶部 -->
-<script>
-    window.onbeforeunload = function(){
-        //刷新后页面自动回到顶部
-        document.documentElement.scrollTop = 0;  //ie下
-        document.body.scrollTop = 0;  //非ie
-    }
-</script>
-<script src="/assets/js/main.js"></script>
-</body>
-</html>
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
