@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-11-06T07:40:08+08:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">The simpler, the happier</title><subtitle>Simple man, practical work.</subtitle><entry><title type="html">基于决策树模型对 IRIS 数据集分类</title><link href="http://localhost:4000/blog/2018/11/03/%E5%9F%BA%E4%BA%8E%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B%E5%AF%B9-IRIS-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E7%B1%BB.html" rel="alternate" type="text/html" title="基于决策树模型对 IRIS 数据集分类" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>http://localhost:4000/blog/2018/11/03/%E5%9F%BA%E4%BA%8E%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B%E5%AF%B9%20IRIS%20%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E7%B1%BB</id><content type="html" xml:base="http://localhost:4000/blog/2018/11/03/%E5%9F%BA%E4%BA%8E%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B%E5%AF%B9-IRIS-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E7%B1%BB.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-06T10:10:36+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">The simpler, the happier</title><subtitle>Simple man, practical work.</subtitle><entry><title type="html">基于决策树模型对 IRIS 数据集分类</title><link href="http://localhost:4000/2018/11/03/%E5%9F%BA%E4%BA%8E%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B%E5%AF%B9-IRIS-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E7%B1%BB.html" rel="alternate" type="text/html" title="基于决策树模型对 IRIS 数据集分类" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>http://localhost:4000/2018/11/03/%E5%9F%BA%E4%BA%8E%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B%E5%AF%B9%20IRIS%20%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E7%B1%BB</id><content type="html" xml:base="http://localhost:4000/2018/11/03/%E5%9F%BA%E4%BA%8E%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B%E5%AF%B9-IRIS-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E7%B1%BB.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#1-python-实现&quot; id=&quot;markdown-toc-1-python-实现&quot;&gt;1 python 实现&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#加载数据集&quot; id=&quot;markdown-toc-加载数据集&quot;&gt;加载数据集&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#可视化数据集&quot; id=&quot;markdown-toc-可视化数据集&quot;&gt;可视化数据集&lt;/a&gt;&lt;/li&gt;
@@ -59,7 +59,7 @@
 &lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/images/visualing_data.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/visualing_data.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;分类和预测&quot;&gt;分类和预测&lt;/h3&gt;
 
@@ -98,7 +98,7 @@
 
 &lt;p&gt;Matlab 对数据的可视化&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/images/1473449531.jpg&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/1473449531.jpg&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;实现代码如下：&lt;/p&gt;
 
@@ -146,7 +146,7 @@
 &lt;span class=&quot;n&quot;&gt;y_test_p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;strcmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y_test_p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;disp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'The accuracy is '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;num2str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">神经网络学习笔记</title><link href="http://localhost:4000/blog/2018/10/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" rel="alternate" type="text/html" title="神经网络学习笔记" /><published>2018-10-03T00:00:00+08:00</published><updated>2018-10-03T00:00:00+08:00</updated><id>http://localhost:4000/blog/2018/10/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/blog/2018/10/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">神经网络学习笔记</title><link href="http://localhost:4000/2018/10/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" rel="alternate" type="text/html" title="神经网络学习笔记" /><published>2018-10-03T00:00:00+08:00</published><updated>2018-10-03T00:00:00+08:00</updated><id>http://localhost:4000/2018/10/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/2018/10/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;本笔记主要是我研读《神经网络与深度学习》一书之后，对重要知识点的整理和公式的推导。这里讲的神经网络是最简单的前馈神经网络，学习算法采用基于误差反向传播的（随机）梯度下降算法。&lt;/p&gt;
 
@@ -168,7 +168,7 @@
 
 &lt;p&gt;一个三层的神经网络结构（包含输入层）如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/images/神经网络典型结构.png&quot; alt=&quot;神经网络典型结构&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/神经网络典型结构.png&quot; alt=&quot;神经网络典型结构&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;注意：输入层节点没有运算功能，直接将输入信号传递给隐藏层，而隐藏层和输出层将输入首先进行线性变换，然后再经过激活函数映射到输出。&lt;/p&gt;
 
@@ -251,7 +251,7 @@ b^l \leftarrow b^l - \eta\frac{\partial C}{\partial b^l}
 
 &lt;p&gt;神经网络学习过程的流程图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/images/神经网络学习算法流程图.png&quot; alt=&quot;神经网络学习算法流程图&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/神经网络学习算法流程图.png&quot; alt=&quot;神经网络学习算法流程图&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;5-经典神经网络存在的问题和改进&quot;&gt;5 经典神经网络存在的问题和改进&lt;/h2&gt;
 
@@ -259,11 +259,11 @@ b^l \leftarrow b^l - \eta\frac{\partial C}{\partial b^l}
 
 &lt;p&gt;经典的神经网络采用的激活函数是 $sigmoid$ 函数，代价采用二次代价函数，两者配合使用共同导致&lt;strong&gt;在输出误差较大时学习的速度反而很慢，随着误差的逐渐减小，学习速度出现先增大后又减小的现象&lt;/strong&gt;。（如下图） 为什么会出现这种反常识的现象呢？按照人类的学习经验，不应该是误差越大学习速度越大吗?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/images/饱和问题.png&quot; alt=&quot;饱和问题&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/饱和问题.png&quot; alt=&quot;饱和问题&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;要解释这个问题我们首先看看 $sigmoid$ 函数的输入输出曲线：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/images/sigmoid.png&quot; alt=&quot;sigmoid&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/sigmoid.png&quot; alt=&quot;sigmoid&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;$sigmoid$ 函数将输入$(-\infty, +\infty)$的数值挤压到$(0, 1)$ 之间。当输入的绝对值很大时，$sigmoid$ 函数的导数趋近于0，再来看看上面的误差反向传播公式，$\delta^L$ 的公式中恰好含有$\sigma^{‘} (z^L)$, 这就是原因所在。&lt;/p&gt;
 
@@ -309,7 +309,7 @@ softmax(x_i)(1-softmax(x_i)), i=j \\
 
 &lt;p&gt;推导过程：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/images/softmax—ln.jpg&quot; alt=&quot;softmax—ln&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/softmax—ln.jpg&quot; alt=&quot;softmax—ln&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;有了这样的相似性，你应该使一个具有交叉熵代价的 sigmoid 型输出层，还是一个具有对数似然
 代价的柔性最大值输出层呢？柔性最大值加上对数似然的组合更加适合于那些需要将输出激活值解释为概率的场景。&lt;/p&gt;

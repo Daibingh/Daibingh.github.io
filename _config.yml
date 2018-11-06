@@ -17,10 +17,13 @@ title: The simpler, the happier
 email: Daibingh@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Simple man, practical work.
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "http://Daibingh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://Daibingh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  Daibingh
 twitter_username: ""
+
+css_path: "/assets/main.css"
+image_path: "/images"
 
 # Build settings
 # highlighter: rouge
