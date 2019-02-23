@@ -1,47 +1,61 @@
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
+# which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: The simpler, the happier
-email: Daibingh@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Simple man, practical work.
+title: Daibingh
+brief-intro: Less is more, slow is fast.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://Daibingh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  Daibingh
-twitter_username: ""
+url: "https://Daibingh.github.io" # the base hostname & protocol for your site
 
-css_path: "/assets/main.css"
-image_path: "/images"
+permalink: /:year/:month/:day/:title/
+
+# other links
+twitter_username: Daibingh
+# facebook_username: gaohaoyang.water
+github_username:  Daibingh
+email: daibingh@gmail.com
+# weibo_username: 3115521wh
+zhihu_username: Daibingh
+# linkedIn_username: gaohaoyang
+# dribbble_username:
+
+description_footer: Enjoying code ocean ...
+
+# comments
+# two ways to comment, only choose one, and use your own short name
+# 两种评论插件，选一个就好了，使用自己的 short_name
+duoshuo_shortname: #hygblog
+disqus_shortname: Daibingh
+
+# statistic analysis 统计代码
+# 百度统计 id，将统计代码替换为自己的百度统计id，即
+# hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
+# xxxxx字符串
+baidu_tongji_id:
+google_analytics_id:
 
 # Build settings
-# highlighter: rouge
 markdown: kramdown
+
 kramdown:
   input: GFM
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+  syntax_highlighter: rouge
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# port
+# port: 1234
+
+# url
+category_dir: category/
+tag_dir: tag/
+
+# excerpt
+excerpt_separator: "\n\n\n\n"
+
+# paginate
+gems: [jekyll-paginate]
+paginate: 6
+
