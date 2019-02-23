@@ -1,2 +1,3 @@
 
-This is my home page modified by minama theme.
+This is my home page modified by HyG‘s theme.
+
