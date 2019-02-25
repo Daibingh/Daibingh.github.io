@@ -1,8 +1,8 @@
   
   body {
     color: rgb(213, 210, 205);
-    background-image: none;
-    background-color: #989595;
+    background-image: url("/images/pexels-photo-1308624.jpeg");
+    /*background-color: #989595;*/
   }
 
   .page .left {
