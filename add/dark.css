@@ -103,3 +103,7 @@ h2 {
 .page .left ul > h2 {
     color: rgb(192, 188, 181);
 }
+
+.page[index] .right .wrap .side .content-ul[cate] li a {
+    border-bottom-color: rgb(54, 54, 54);
+}
