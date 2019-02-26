@@ -1,0 +1,105 @@
+  
+  body {
+    color: rgb(213, 210, 205);
+    background-image: none;
+    background-color: #989595;
+  }
+
+  .page .left {
+      background-color: rgb(12, 12, 43);
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px, rgba(10, 10, 0, 0.1) 0px 0px 30px inset;
+  }
+
+  .page[index] .left > ul li {
+      color: rgb(213, 210, 205);
+  }
+
+  .page[index] .left > ul li h2 {
+      border-top-color: initial;
+      border-right-color: initial;
+      border-bottom-color: initial;
+      border-left-color: initial;
+  }
+
+  header {
+      background-image: initial;
+      background-color: rgb(30, 32, 38);
+      color: rgb(185, 180, 172);
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 1px;
+  }
+
+  header .wrapper nav ul li > .active {
+      color: rgb(255, 255, 255);
+      background-color: rgb(0, 0, 0);
+      box-shadow: rgba(23, 24, 28, 0.93) 0px 25px 25px -15px;
+  }
+
+  .page .right .side > div {
+      border-bottom-color: rgb(64, 64, 64);
+  }
+
+  .site-footer {
+      background-color: rgb(43, 49, 60);
+      box-shadow: rgba(0, 0, 0, 0.5) 0px -2px 4px 1px;
+      color: rgb(192, 188, 182);
+  }
+
+  .site-footer .wrapper .power a {
+      color: rgb(144, 163, 197);
+  }
+
+  .page .right .side a {
+      color: rgb(137, 169, 203);
+  }
+
+  .page .left ul li {
+      color: rgb(185, 180, 172);
+  }
+
+  .page .left ul li .title {
+      color: rgb(179, 201, 224);
+  }
+
+  .page .left ul li .pageTag a {
+      background-color: rgb(24, 29, 61);
+      color: rgb(255, 255, 255);
+  }
+
+.page .right .side {
+    background-color: rgb(12, 12, 43);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 1px, rgba(10, 10, 0, 0.1) 0px 0px 30px inset;
+}
+
+.page[index] .right .wrap .side .content-ul[cate] li a .badge {
+    color: rgb(255, 255, 255);
+    background-color: rgb(38, 43, 53);
+}
+
+.page .left ul li .categories a {
+    background-color: rgb(44, 52, 66);
+    color: rgb(255, 255, 255);
+}
+
+html, body, input, textarea, select, button {
+    border-color: #575757;
+    border-top-color: rgb(87, 87, 87);
+    border-right-color: rgb(87, 87, 87);
+    border-bottom-color: rgb(87, 87, 87);
+    border-left-color: rgb(87, 87, 87);
+    color: #e8e7e3;
+}
+
+hr {
+    border-right-color: initial;
+    border-bottom-color: initial;
+    border-left-color: initial;
+    border-top-color: rgb(54, 54, 54);
+}
+
+h2 {
+    border-bottom-color: rgb(54, 54, 54);
+}
+
+.page .left ul > h2 {
+    color: rgb(192, 188, 181);
+}
