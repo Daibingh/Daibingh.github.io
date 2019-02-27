@@ -134,7 +134,7 @@ h2 {
 
 .page[index] .right .wrap .side .content-ul[cate] li a:hover .badge {
     background-color: #dbdfee;
-    color: rgb(137, 169, 203);
+    color: rgb(20, 20, 20);
     transform: scale(1.2) rotate(360deg);
 }
 
