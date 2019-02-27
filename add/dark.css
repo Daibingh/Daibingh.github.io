@@ -107,3 +107,27 @@ h2 {
 .page[index] .right .wrap .side .content-ul[cate] li a {
     border-bottom-color: rgb(54, 54, 54);
 }
+
+.page[index] .right .wrap .side .tags-cloud a:hover {
+    background-color: rgb(62, 50, 19);
+}
+
+.page[index] .right .wrap .side .content-ul[cate] li a:hover {
+    background-color: rgb(62, 50, 19);
+}
+
+.page .right .side a:hover {
+    color: rgb(179, 201, 224);
+}
+
+.page[index] a:hover {
+    color: rgb(179, 201, 224);
+}
+
+.page .left ul li .pageTag a:hover {
+    background-color: rgb(31, 58, 38);
+}
+
+.page .left ul li .categories a:hover {
+    background-color: rgb(31, 58, 38);
+}
