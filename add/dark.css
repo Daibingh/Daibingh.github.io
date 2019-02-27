@@ -57,7 +57,7 @@
   }
 
   .page .left ul li .title {
-      color: rgb(179, 201, 224);
+      color: rgb(118, 157, 197);
   }
 
   .page .left ul li .pageTag a {
@@ -113,7 +113,6 @@ h2 {
 }
 
 .page[index] .right .wrap .side .content-ul[cate] li a:hover {
-    color: rgb(137, 169, 203);
     background-color: rgb(62, 50, 19);
 }
 
@@ -131,4 +130,14 @@ h2 {
 
 .page .left ul li .categories a:hover {
     background-color: rgb(31, 58, 38);
+}
+
+.page[index] .right .wrap .side .content-ul[cate] li a:hover .badge {
+    background-color: #dbdfee;
+    color: rgb(137, 169, 203);
+    transform: scale(1.2) rotate(360deg);
+}
+
+.page .left ul li .title:hover {
+    color: #97b0e2;
 }
