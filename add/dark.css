@@ -156,3 +156,7 @@ code {
     border-left-color: rgb(67, 57, 60);
 }
 
+.page[index] a {
+    color: rgb(118, 157, 197);
+    transition: 0.5s ease;
+}
