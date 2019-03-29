@@ -141,3 +141,22 @@ h2 {
 .page .left ul li .title:hover {
     color: #97b0e2;
 }
+
+.highlight {
+    background-image: initial;
+    background-color: rgb(32, 35, 42);
+}
+
+code {
+    color: rgb(232, 231, 227);
+    background-color: rgba(0, 0, 0, 0.06);
+    border-top-color: rgb(67, 57, 60);
+    border-right-color: rgb(67, 57, 60);
+    border-bottom-color: rgb(67, 57, 60);
+    border-left-color: rgb(67, 57, 60);
+}
+
+.page[index] a {
+    color: rgb(118, 157, 197);
+    transition: 0.5s ease;
+}
