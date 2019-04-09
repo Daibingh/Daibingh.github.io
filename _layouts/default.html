@@ -4,7 +4,11 @@
   {% include head.html %}
 
   <link rel="stylesheet" type="text/css" href="/add/dark.css">
-
+  {% if page.title == 'Demo' %}
+    <link rel="stylesheet" type="text/css" href="/add/demo-style.css">
+    <script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/demo-js.js" charset="utf-8"></script>
+  {% endif %}
   <body>
 
     {% include header.html %}
@@ -14,7 +18,7 @@
     {% include footer.html %}
     {% include backToTop.html %}
     <script src="{{ " /js/main.js " | prepend: site.baseurl }}" charset="utf-8"></script>
-    <script src="{{ " /js/smooth-scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+    <script src="{{ " /js/smooth-scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script> 
     <script type="text/javascript">
       smoothScroll.init({
         speed: 500, // Integer. How fast to complete the scroll in milliseconds

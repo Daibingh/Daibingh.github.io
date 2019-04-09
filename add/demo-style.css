@@ -1,0 +1,33 @@
+ * {
+ 	margin: 0;
+  	padding: 0;
+ }
+
+ body {
+    background-image: none;
+    margin: 0;
+  	padding: 0;
+  }
+
+  header {
+  	margin: 0;
+  	padding: 0;
+  }
+
+
+#demo-show {
+  position: relative;
+  /*overflow:hidden;*/
+}
+
+.demo-imgList img {
+	/*display：block;*/
+	position: relative;
+	top: -5px;
+}
+
+.demo-imgList li {display: none;}
+.demo-imgList .imgOn {display: inline;}
+.demo-imgList {
+  /*overflow: hidden;*/
+}
