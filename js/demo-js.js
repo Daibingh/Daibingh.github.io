@@ -10,7 +10,7 @@ var autoChange = setInterval(function(){
     }
     //调用变换处理函数
     changeTo(curIndex);  
-},5000);
+},10000);
 
 $(".indexList").find("li").each(function(item){ 
     $(this).hover(function(){ 
@@ -26,7 +26,7 @@ $(".indexList").find("li").each(function(item){
             }
             //调用变换处理函数
             changeTo(curIndex);  
-        },5000);
+        },10000);
     });
 });
 function changeTo(num){ 
