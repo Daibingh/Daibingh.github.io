@@ -8,17 +8,10 @@ type: page
 
 <div id="demo-show">
 	<ul class="demo-imgList">
-		<li class="imgOn"><img src="/my_imgs/1.jpg"></li>
-		<li><img src="/my_imgs/2.jpg"></li>
-		<li><img src="/my_imgs/3.jpg"></li>
-		<li><img src="/my_imgs/4.jpg"></li>
-		<li><img src="/my_imgs/5.jpg"></li>
-		<li><img src="/my_imgs/6.jpg"></li>
-		<li><img src="/my_imgs/7.jpeg"></li>
-		<li><img src="/my_imgs/8.jpg"></li>
-		<li><img src="/my_imgs/9.jpg"></li>
-		<li><img src="/my_imgs/10.jpg"></li>
-		<li><img src="/my_imgs/11.jpg"></li>
-		<li><img src="/my_imgs/12.jpg"></li>
+		{% for image in site.static_files %}
+    		{% if image.path contains 'my_imgs' %}
+        		<li class="imgOn"><img src="{{ site.baseurl }}{{ image.path }}" alt="image" /></li>
+    		{% endif %}
+		{% endfor %}
 	</ul>
 </div>
