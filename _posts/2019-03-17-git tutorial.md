@@ -11,6 +11,10 @@ excerpt: "这是一篇关于 git 的精简教程，涵盖了 git 最常用的命
 * content
 {:toc}
 
+<!-- # git 教程
+
+[toc] -->
+
 ## git 学习资源
 
 - [Git-book](https://git-scm.com/book/zh/v2)
@@ -75,7 +79,7 @@ git merge <branch_name>
 git branch -m <old_name> <new_name> # 分支重命名
 ```
 
-### 移动 HEAD 到指定提交、分支、标签（切换）
+### 切换到指定的分支或提交
 
 每一次提交都是一个历史节点，而 HEAD、分支、标签分布在部分历史节点之上。
 
@@ -85,12 +89,24 @@ git checkout <branch_name> | <tag_name> | <commit_id> # 移动 HEAD 到指定分
 git checkout HEAD~ # 将head指向上一次提交的节点，同时恢复索引和工作目录，分支指向不动
 ```
 
-### 版本回退与文件恢复
+### 恢复本地文件而提交不变
 
 - 恢复上一次提交到索引 `git reset HEAD <file>`
 - 恢复索引到工作目录 `git checkout -- <file>`
-- 版本回退 `git reset --hard <commit_id> | HEAD^`  **注： 与切换分之不同**
-    - 重新回到回退之前版本，使用 `git reflog` 找到对应的 commit id
+
+### 提交和本地同时恢复
+
+```sh
+git reset --hard <commit_id> | HEAD^  # 将提交恢复到 commit_id, 而本地也相应改变
+```
+
+>commit_id 之后的提交记录通过 git log 不再显示，使用 `git reflog` 找到对应的 commit id
+
+### 撤销提交而本地不变
+
+```sh
+git reset --soft <commit_id>  # 将提交恢复到 commit_id, 而本地不变
+```
 
 ### 修改提交（覆盖提交）
 
@@ -140,12 +156,24 @@ git clone -b <branch_name> <address> # clone 指定分支
 git fetch origin <branch_name> # 下载远程分支到本地
 git pull origin <branch_name> # 下载远程分支到本地，并与当前分支合并
 git push origin <branch_name> # 上传当前分支，并与远程仓指定分支合并
+git push -u origin master -f  # 强制推送到远程分支
 ```
+
+
+## 查看改动，对比分支不同
+
+```sh
+git diff HEAD --stat  # 与当前 HEAD 相比, 列出改动的文件列表
+git diff <branch_1> <branch_2> --stat  # 比较两个分支不同的文件列表
+git diff <branch_1> <branch_2> <file_name>  # 查看某个文件具体内容的不同之处
+```
+
 
 ### 其它
 
 ```sh
 git branch -r # 查看远程分支
+git push origin --delete <branch_name> # 删除远程分支
 ```
 
 ## gitignore 规则
@@ -164,14 +192,14 @@ git commit -m 'update .gitignore'
 
 ```sh
 [user]
-	email = daibingh@gmail.com
-	name = daibingh
+    email = daibingh@gmail.com
+    name = daibingh
 [alias]
-	st = status
-	co = checkout
-	ci = commit
-	br = branch
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    st = status
+    co = checkout
+    ci = commit
+    br = branch
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 ```
 

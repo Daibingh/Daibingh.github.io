@@ -1,0 +1,583 @@
+---
+layout: post
+title:  "pandas 数据处理"
+categories: pandas
+tags: Python pandas
+author: hdb
+mathjax: true
+excerpt: pandas 常用数据处理操作。
+comments: true
+---
+
+* content
+{:toc}
+
+<!-- # pandas 数据处理 -->
+
+<!-- [toc] -->
+
+## pandas 数据格式
+
+pandas 两种常用数据格式：
+- Series
+- DataFrame，它的每一列是 Series
+
+Series 常用的属性：
+- name --> str
+- index
+- shape --> tuple
+- dtype
+- values --> ndarray
+
+DataFrame 常用属性：
+- index
+- columns
+- values --> ndarray
+- dtypes --> Series
+- shape --> tuple
+
+## 基本展示
+
+- x.head(), x.head(20)
+- x.tail(), x.tail(20)
+- x.describe()
+- sr.value_counts()  # 计数统计
+- `df.info()`
+
+
+## 创建 Series, DataFrame
+
+```python
+sr = pd.Series([1,2,3])
+sr = pd.Series([1,2,3], index=[0,1,2])
+>>> sr
+0    1
+1    2
+2    3
+dtype: int64
+
+sr = pd.Series({'a':1, 'b':2, 'c':3})
+>>> sr
+a    1
+b    2
+c    3
+dtype: int64
+
+df = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]}, index=range(3))
+>>> df
+   a  b
+0  1  4
+1  2  5
+2  3  6
+df = pd.DataFrame([[1,2],[3,4]], columns=['a','b'])
+>>> df
+   a  b
+0  1  2
+1  3  4
+```
+
+## 修改索引
+
+```python
+# 修改索引
+df = pd.DataFrame([[1,2],[3,4]], columns=['a','b'])
+df.index = [1,2]
+df.columns = ['c','d']
+>>> df
+   c  d
+1  1  2
+2  3  4
+
+df2 = df.rename({'a': 'X', 'b': 'Y'}, axis=1)  # 修改部分索引
+```
+
+## 类型转换
+
+```python
+df = pd.DataFrame([[1,2],[3,4]], columns=['a','b'])
+>>> df.dtypes
+a    int64
+b    int64
+df2 = df.astype('str')
+>>> df2.dtypes
+a    object
+b    object
+dtype: object
+```
+
+## 切片
+
+- df[column_key] 选择某一列（其中 `column_key` 是字符串）<==> df.column_key
+- df[[key1, ...]] 选择多列
+- df.loc[idx1] 选择 index == idx1 的行
+- df.loc[[idx1, idx2], [key1, key2]] 选择 index 属于 {idx1, idx2}, columns 属于 {key1, key2} 的表（DataFrame）
+- df.iloc[pos1, pos2]
+
+>注意：df['a'] 和 df[['a']] 不同，前者返回 Series, 后者返回 DataFrame
+
+```python
+a=np.random.rand(10,4)
+df=pd.DataFrame(a)
+df.columns = list('abcd')
+>>> df
+          a         b         c         d
+0  0.476674  0.491428  0.465477  0.976000
+1  0.397214  0.483136  0.759356  0.119943
+2  0.592388  0.867402  0.268019  0.357892
+3  0.268457  0.316199  0.239093  0.908658
+4  0.119298  0.894530  0.825473  0.799663
+5  0.906994  0.540645  0.044490  0.896530
+6  0.130975  0.148297  0.994240  0.169837
+7  0.943039  0.543730  0.047538  0.327427
+8  0.113551  0.683084  0.649643  0.810463
+9  0.117071  0.101195  0.028766  0.957437
+
+>>> df['a']
+0    0.476674
+1    0.397214
+2    0.592388
+3    0.268457
+4    0.119298
+5    0.906994
+6    0.130975
+7    0.943039
+8    0.113551
+9    0.117071
+Name: a, dtype: float64
+
+sr = df['a']
+>>> sr[0]
+0.4766742823955723
+
+>>> df[['a','b']]
+          a         b
+0  0.476674  0.491428
+1  0.397214  0.483136
+2  0.592388  0.867402
+3  0.268457  0.316199
+4  0.119298  0.894530
+5  0.906994  0.540645
+6  0.130975  0.148297
+7  0.943039  0.543730
+8  0.113551  0.683084
+9  0.117071  0.101195
+
+>>> df.loc[1]
+a    0.397214
+b    0.483136
+c    0.759356
+d    0.119943
+Name: 1, dtype: float64
+
+>>> df.loc[[1,2]]
+          a         b         c         d
+1  0.397214  0.483136  0.759356  0.119943
+2  0.592388  0.867402  0.268019  0.357892
+
+>>> df.loc[[1,2],['a','c']]
+          a         c
+1  0.397214  0.759356
+2  0.592388  0.268019
+```
+
+## 布尔索引
+
+- df[bool_series] 选择所有为 True 的行
+- df.loc[[bool_series1], [bool_series2]] 
+- df.loc[:, [bool_series]]
+- df.loc[[bool_series], [key1, key2]] 
+
+```python
+a=np.random.rand(10,4)
+df=pd.DataFrame(a)
+df.columns = list('abcd')
+
+>>> df['a']>.5
+0    False
+1    False
+2     True
+3    False
+4    False
+5     True
+6    False
+7     True
+8    False
+9    False
+Name: a, dtype: bool
+
+>>> df[df['a']>.5] <==> df.loc[df['a']>.5]
+          a         b         c         d
+2  0.592388  0.867402  0.268019  0.357892
+5  0.906994  0.540645  0.044490  0.896530
+7  0.943039  0.543730  0.047538  0.327427
+
+>>> df[df>.5]
+          a         b         c         d
+0       NaN       NaN       NaN  0.976000
+1       NaN       NaN  0.759356       NaN
+2  0.592388  0.867402       NaN       NaN
+3       NaN       NaN       NaN  0.908658
+4       NaN  0.894530  0.825473  0.799663
+5  0.906994  0.540645       NaN  0.896530
+6       NaN       NaN  0.994240       NaN
+7  0.943039  0.543730       NaN       NaN
+8       NaN  0.683084  0.649643  0.810463
+9       NaN       NaN       NaN  0.957437
+
+>>> df[(df['a']>.5) & (df['d']>.5)] <==> df.loc[(df['a']>.5) & (df['d']>.5)]
+          a         b        c        d
+5  0.906994  0.540645  0.04449  0.89653
+
+>>> df.loc[:,df.loc[0]>0.5]
+          d
+0  0.976000
+1  0.119943
+2  0.357892
+3  0.908658
+4  0.799663
+5  0.896530
+6  0.169837
+7  0.327427
+8  0.810463
+9  0.957437
+```
+
+
+## 多重索引
+
+```py
+index = pd.MultiIndex.from_tuples(tuples, names=['first', 'second'])
+```
+
+>http://pandas.pydata.org/pandas-docs/stable/user_guide/advanced.html
+
+
+## 查看缺失值
+
+```python
+>>> df2
+          a         b         c
+0  0.476674  0.491428  0.465477
+1  0.397214       NaN  0.759356
+2       NaN  0.867402  0.268019
+
+>>> df2.isnull()
+       a      b      c
+0  False  False  False
+1  False   True  False
+2   True  False  False
+
+>>> df2.isnull().any()  # 沿 axis=0 轴合并
+a     True
+b     True
+c    False
+dtype: bool
+
+>>> df2.isnull().any(axis=1)  # 沿 axis=1 轴合并
+0    False
+1     True
+2     True
+dtype: bool
+
+df2.index[df2.isnull().any(axis=1)]  # 找出缺失值所在的行标
+Int64Index([1, 2], dtype='int64')
+```
+
+## 缺失值填充
+
+- sr.fillna(value, inplace=True)
+
+## 逻辑与或
+
+- (sr1>sr2).all()
+- (sr1>sr2).any()
+
+## 删除、去重
+
+- df.drop(labels=None, axis=0, index=None, columns=None, level=None, inplace=False, errors='raise')
+- drop_duplicates(subset=None, keep='first', inplace=False)
+
+
+## 排序
+
+- 按值排序：df.sort_values(by=[...], axis=0, ascending=True, inplace=False, kind='quicksort', na_position='last')
+- 按索引排序：df.sort_index(axis=0, level=None, ascending=True, inplace=False, kind='quicksort', na_position='last', sort_remaining=True, by=None)
+
+## 按指定索引重排
+
+- df.reindex(new_index)
+
+## 频率统计
+
+- ser.value_counts()
+
+## 返回唯一值
+
+- ser.unique()
+
+## 查找、匹配
+
+- df.isin([..]) 返回 bool series
+- ser.str.contains(pattern) 返回 bool series，字符串查找，支持正则表达式
+
+## onehot 编码
+
+- sr.get_dummies()  # 每一行单个取值
+- sr.str.get_dummies(',')  #  每一行多个取值，逗号分隔
+
+## 拼接
+
+- pd.concat([df1, df2], axis=0, ignore_index=True)
+    - 可以将多个 df 或 sr, 行拼接或列拼接
+    - axis=1, 多列拼接，连接键默认为 index
+    - 指定 ignore_index=True, 合并后，索引按 0,1,2，... 重排
+    - keys = ['xx', ...] 用于在拼后建立多重索引
+- pd.merge(left, right, on=.., how='inner', ...)
+    - 用于列拼接
+    - on 指定拼接键
+    - how 取 'inner', 'outer', 'left', 'right', inner 取连接键的交集，outer 取并集
+
+```python
+df1 = pd.DataFrame({'a': [1,1,2,3,3,3,2], 'b':[1,2,3,4,5,6,7]})
+df2 = pd.DataFrame({'a': [1,2,3,4], 'c':[5,6,7,8]})
+print(df1)
+print('-------')
+print(df2)
+print('-------------')
+pd.merge(df1, df2, on='a')
+
+  a  b
+0  1  1
+1  1  2
+2  2  3
+3  3  4
+4  3  5
+5  3  6
+6  2  7
+-------
+   a  c
+0  1  5
+1  2  6
+2  3  7
+3  4  8
+-------------
+    a	b	c
+0	1	1	5
+1	1	2	5
+2	2	3	6
+3	2	7	6
+4	3	4	7
+5	3	5	7
+6	3	6	7
+
+
+df1 = pd.DataFrame({'a':np.random.rand(3),'c':np.random.rand(3),'b': np.random.rand(3)})
+df2 = pd.DataFrame({'d':np.random.rand(3),'f':np.random.rand(3),'e': np.random.rand(3)})
+df3 = pd.DataFrame({'i':np.random.rand(3),'g':np.random.rand(3),'h': np.random.rand(3)})
+df = pd.concat([df1, df2, df3], axis=1, keys=['1', '2', '3'])
+	1	                                2	                                3
+    a	        c	        b	        d	        f       	e	        i	        g       	h
+0	0.262559	0.448603	0.961162	0.760485	0.304973	0.544774	0.082724	0.080505	0.132155
+1	0.721134	0.561027	0.937514	0.577973	0.042380	0.168546	0.645962	0.769562	0.640384
+2	0.533538	0.097343	0.459582	0.276983	0.270667	0.818550	0.434499	0.697353	0.079110
+
+df.loc[:, ('1', slice(None))]  # 多重索引的切片
+    1
+    a	        c       	b
+0	0.044250	0.016172	0.636867
+1	0.914084	0.610851	0.638163
+2	0.196434	0.779077	0.529745
+```
+
+## 读写文件
+
+csv
+- 读取 csv
+    ```py
+    df = pd.read_csv('xx.csv')  # 读取带有 header, 没有 index，以逗号间隔的表，（header 默认是第一行，自动添加 index）
+    df = pd.read_csv('xx.csv', index_col=0)  # 读取带有 index 的表，并指定 index 的列
+    df = pd.read_csv('xx.csv', sep='\t', header=None， names=[..])  # 没有 header 的话，必须设置 header=None, 并使用 names 指定 columns
+    ```
+- 保存 csv
+    ```py
+     csv：df.to_csv('xx.csv', index=False, header=True, mode='w', sep=',')
+    ```
+
+hdf
+- df = pd.read_hdf('xx.h5', key='xxx')
+- df.to_hdf('xx.h5', key='xxx', mode='w')
+
+>对于超大文件，hdf 读写可能失败，可以用 pickle
+
+pickle
+- df.read_pickle(..)
+- df.to_pickle(..)
+
+## Map
+
+进行单列的函数映射或字典映射，输入输出形状不变
+
+sr.map(xx), xx 可以是：
+- 函数
+- 字典
+- Series
+
+```python
+a=np.random.rand(4,3)
+df = pd.DataFrame(a, columns=list('abc'))
+>>> df
+          a         b         c
+0  0.698255  0.037483  0.099545
+1  0.531019  0.110648  0.601072
+2  0.883828  0.433867  0.083165
+3  0.421908  0.397592  0.148393
+
+>>> df['a'].map(str)
+0     0.6982551727271022
+1     0.5310185100676619
+2     0.8838283555917328
+3    0.42190809006346663
+Name: a, dtype: object
+```
+
+## apply
+
+对表的各行或各列应用一个函数映射，有压缩维度的效果
+
+```py
+a=np.random.rand(4,3)
+df = pd.DataFrame(a, columns=list('abc'))
+>>> df
+          a         b         c
+0  0.698255  0.037483  0.099545
+1  0.531019  0.110648  0.601072
+2  0.883828  0.433867  0.083165
+3  0.421908  0.397592  0.148393
+
+>>> df.apply('mean')
+a    0.372162
+b    0.411302
+c    0.303223
+dtype: float64
+
+>>> df.apply(lambda t: t.a+t.b-t.c, axis=1)
+0    0.382569
+1    0.734681
+2    0.261291
+3    0.542423
+dtype: float64
+```
+
+## groupby
+
+- https://blog.csdn.net/zhangxiaojiakele/article/details/78198568
+- https://blog.csdn.net/youngbit007/article/details/54288603
+
+```python
+df=pd.DataFrame({'a': [1,2,2,2,3,1,3], 'b': [1,2,3,4,5,6,7]})
+groupby_a = df.groupby(['a'])
+groupby_a
+<pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f50cc0889b0>
+
+groupby_a.size()  # 分组统计数目
+a
+1    2
+2    3
+3    2
+dtype: int64
+
+groupby_a['b'].mean()  # 组内求均值
+a
+1    3.5
+2    3.0
+3    6.0
+Name: b, dtype: float64
+
+# 以上操作等价于
+df.b.groupby(df.a).mean()
+
+# 遍历分组
+for g in groupby_a:
+    print('a = ', g[0])
+    print(g[1])
+    print('-------')
+
+a =  1
+   a  b
+0  1  1
+5  1  6
+-------
+a =  2
+   a  b
+1  2  2
+2  2  3
+3  2  4
+-------
+a =  3
+   a  b
+4  3  5
+6  3  7
+-------
+```
+
+## agg
+
+- df.agg([fun1, fun2])  将表的每列分别按照 fun1, fun2 进行聚合
+- df.agg({'a': 'sum', 'b': 'mean'}) 每列按照不同函数聚合
+- df.groupby(['a']).agg(..)  先分组，组内在聚合
+- df.groupby('a')['b'].agg({'b_sum': 'sum', 'b_mean': 'mean'})  分组，对其中一列实施多个聚合操作，并通过字典的 key 指定新列名
+
+## 时间操作
+
+- 字符串转时间
+    ```py
+    # 单个字符串转换时间类型
+    t1 = pd.to_datetime('2019-06-01')  # Timestamp('2019-06-01 00:00:00')
+    # 多个字符串进行转换
+    t2 = pd.to_datetime(['2019-11-01', '2019-12-03'])  # DatetimeIndex(['2019-11-01', '2019-12-03'], dtype='datetime64[ns]', freq=None)
+    ```
+- 求星期几
+    ```py
+    t1.dayofweek  # Int64Index([4, 1], dtype='int64')
+    t2.dayofweek  # 5
+    ```
+- 时间戳转换转时间
+    - sr.map(lambda t: time.strftime('%Y%m%d %H:%M:%S', time.localtime(t)))  # 时间戳 -> 时间字符串
+    - pd.to_datetime(time.time(), unit='s')  # Timestamp('2019-05-29 07:35:24.789425373')  # 时间戳 -> pandas 时间类型 
+
+>https://www.jianshu.com/p/96ea42c58abe
+
+## 读取大文件的技巧
+
+### 只读取前 n 行
+
+- df = pd.read_csv('xxx.csv', nrows=10000)
+
+### 分批次读取
+
+```py
+data = pd.read_csv('xxx.csv', chunksize=10000)
+for d in data:
+    pass
+```
+>nrows 参数也可以和 chunksize 参数结合使用
+
+### 跳过指定行
+
+- skiprows
+
+
+## 常见问题
+
+- SettingWithCopyWarning
+    ```
+    SettingWithCopyWarning: A value is trying to be set on a copy of a slice from a DataFrame. Try using .loc[row_indexer,col_indexer] = value instead
+    ```
+    - [solution](http://sofasofa.io/forum_main_post.php?postid=1001449)
+
+## 参考
+
+>[1]https://blog.csdn.net/zhili8866/article/details/68134481<br>
+[2]https://blog.csdn.net/qq_42156420/article/details/82813482<br>
+[3]https://www.pypandas.cn/<br>
+

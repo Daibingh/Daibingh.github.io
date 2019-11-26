@@ -12,9 +12,13 @@ excerpt: "python 基础教程，有 Python 运行机制的理解，还有 Python
 {:toc}
 
 
+<!-- # python 基础
+
+[toc] -->
+
 ## Python 内存管理
 
-一篇讲解的非常好的[文档](https://realpython.com/python-memory-management/)
+一篇讲解的非常好的文档：https://realpython.com/python-memory-management/
 
 ### 一切都是对象
 
@@ -42,7 +46,7 @@ python 中引用计数增加的情况：
 Python 中引用计数减少的情况：
 - 在块内定义的变量(例如，在函数或类中)具有本地作用域(即，它们是块的本地变量)。如果 Python 解释器退出该块，它将销毁在该块中创建的所有引用。
 
-[参考文档](https://rushter.com/blog/python-garbage-collector/)
+[ref](https://rushter.com/blog/python-garbage-collector/)
 
 ### GIL
 
@@ -61,17 +65,17 @@ b = a  # `a is b` will return True. b 只是 a 的引用，没有 copy
 
 Python 中使用 copy 有深拷贝和浅拷贝
 
-![](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/shallow-copy.jpg)
+![](https://note.youdao.com/yws/public/resource/89802d1267159210f0f44e6ebfcdd6b3/xmlnote/WEBRESOURCE0a8ba980839618cdb8c3a1735dc78178/15003)
 
-![](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/deep-copy.jpg)
+![](https://note.youdao.com/yws/public/resource/89802d1267159210f0f44e6ebfcdd6b3/xmlnote/WEBRESOURCEa96da98f1983c80640fb2c9c15904415/15005)
 
 可以使用 python 中 copy 模块进行浅拷贝和深拷贝操作
 
-[参考文档](https://www.geeksforgeeks.org/copy-python-deep-copy-shallow-copy/)
+[ref](https://www.geeksforgeeks.org/copy-python-deep-copy-shallow-copy/)
 
 ### Inplace vs Standard Operators in Python
 
-[参考文档](https://www.geeksforgeeks.org/inplace-vs-standard-operators-python/)
+[ref](https://www.geeksforgeeks.org/inplace-vs-standard-operators-python/)
 
 ## python 运行原理
 
@@ -107,8 +111,15 @@ print('Your name is %s, age is %d.' %(name, age)) # %s 通用
 类似数组，但其元素类型可不同
 - 创建：L=['abc', 123,12.3]
 - 访问：L[0] = 123    L[-1] = 5    L[-2] = 5
-- 插入，添加，删除：L.insert(i, value)    L.append(value)    L.pop(i)
-- 长度：len(L)
+- 插入 L.insert(i, value)   
+- 添加 L.append(value)
+- 删除
+    ```py
+    L.pop(i)  # 删除第 i 个
+    L.pop()  # 删除最后一个
+    ```
+- 根据内容删除 L.remove(value)
+- 长度 len(L)
 
 ## tuple
 
@@ -122,19 +133,29 @@ print('Your name is %s, age is %d.' %(name, age)) # %s 通用
 - 访问：d['aa'] = 5    d.get('a')
 - 是否含有： 'aa' in d
 -删除：d.pop('a')
+- 从两个 list 创建 dict
+    ```py
+    >>> keys = ['a', 'b', 'c']
+    >>> values = [1, 2, 3]
+    >>> dictionary = dict(zip(keys, values))
+    >>> print(dictionary)
+    {'a': 1, 'b': 2, 'c': 3}
+    ```
 
-要保证hash的正确性，作为key的对象就不能变。在Python中，字符串、整数等都是不可变的，因此，可以放心地作为key。而list是可变的，就不能作为key
+>要保证hash的正确性，作为key的对象就不能变。在Python中，字符串、整数等都是不可变的，因此，可以放心地作为key。而list是可变的，就不能作为key
 
 ## set
 
 不重复的集合
 - 创建： s = set([1,2,3,4])
 - 添加和删除：s.add(5), s.remove(3)
-- `与或运算：& |`
+- 与或运算：& |
 
 set和dict的唯一区别仅在于没有存储对应的value，但是，set的原理和dict一样，所以，同样不可以放入可变对象，因为无法判断两个可变对象是否相等，也就无法保证set内部“不会有重复元素”。
 
 注意：list, set, tuple等都是引用类型，与数值类型不同。
+
+>[python 基本数据结构](https://www.runoob.com/python3/python3-data-structure.html)
 
 ## 条件判断
 ```py
@@ -280,12 +301,15 @@ print(next(g))
 for n in g:
     print(n)
 ```
-## 迭代器与可迭代对象
-凡是可作用于for循环的对象都是Iterable类型， 如list、tuple、dict、set、str等；
+## 可迭代对象、迭代器与生成器的关系
 
-凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列；
-
-集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。
+- 可迭代对象包含迭代器, 容器(list, dict, set, etc) 和文件流等
+- 生成器是迭代器
+- 可迭代对象必须实现 `__iter__` 或 `__getitem__`
+- 迭代器必须实现 `__iter__` 和 `__next__`
+- 迭代器可以使用 next(iterator)
+- 通过 iter(iterable) 函数可以将可迭代对象转换成迭代器
+- 可迭代对象和迭代器都可以使用 `for .. in ..`
 
 ## map()与reduce()
 map()函数接收两个参数，一个是函数，一个是Iterable，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。
@@ -414,7 +438,7 @@ sys模块有一个argv变量，用list存储了命令行的所有参数。argv�
 ```py
 if __name__=='__main__':
    test()
-```
+```   
 
 当我们在命令行运行hello模块文件时，Python解释器把一个特殊变量`__name__`置为`__main__`，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。
 
@@ -828,3 +852,15 @@ return {
 ```
 
 可选参数default就是把任意一个对象变成一个可序列为JSON的对象，我们只需要为Student专门写一个转换函数，再把函数传进去即可。
+
+## 获取时间
+
+```py
+import time
+time.strftime('%Y%m%d-%H-%M', time.localtime())  # '20190916-15-27'
+time.strftime('%Y%m%d-%H:%M', time.gmtime())  # '20190916-07:27' UTC
+
+>>> import datetime
+>>> datetime.datetime.now()
+datetime.datetime(2009, 1, 6, 15, 8, 24, 78915)
+```
